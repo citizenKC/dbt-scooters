@@ -1,0 +1,50 @@
+version: 2
+
+sources:
+  - name: "scooters_raw"
+    description: "Raw data provided by scooters service"
+    loader: "https://t.me/inzhenerka_dbt_bot"
+    tables:
+      - name: "trips"
+        description: "Scooter trips"
+
+      - name: "users"
+        description: "Users of scooter service"
+
+
+models:
+  - name: trips_prep
+    description: "Preprocessed scooter trips data with calculated metrics and cleaned pricing"
+    config:
+      materialized: view
+    columns:
+      - name: id
+        description: "Unique identifier for the trip"
+      - name: user_id
+        description: "ID of the user who took the trip"
+      - name: scooter_hw_id
+        description: "Hardware ID of the scooter used"
+      - name: started_at
+        description: "Timestamp when the trip started"
+      - name: finished_at
+        description: "Timestamp when the trip ended"
+      - name: start_lat
+        description: "Latitude of trip start location"
+      - name: start_lon
+        description: "Longitude of trip start location"
+      - name: finish_lat
+        description: "Latitude of trip end location"
+      - name: finish_lon
+        description: "Longitude of trip end location"
+      - name: distance_m
+        description: "Trip distance in meters"
+      - name: price_rub
+        description: "Trip price in Russian rubles"
+      - name: duration_s
+        description: "Trip duration in seconds"
+      - name: is_free
+        description: "Boolean indicating if the trip was free (price = 0 but duration > 0)"
+      - name: date
+        description: "Date when the trip started"
+# Обращаться к источнику из любой модели теперь нужно будет строго через макрос:
+# {{ source("<name>", "<table_name>") }}
