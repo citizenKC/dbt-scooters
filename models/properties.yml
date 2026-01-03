@@ -46,5 +46,33 @@ models:
         description: "Boolean indicating if the trip was free (price = 0 but duration > 0)"
       - name: date
         description: "Date when the trip started"
+  - name: trips_stat
+    description: "Trip stats model"
+    config:
+      materialized: table
+    columns:
+      - name: trips
+        description: "count trips"
+      - name: users
+        description: "count distinct users"
+      - name: avg_duration_m
+        description: "avg duration_min"
+      - name: revenue_rub
+        description: "sum over price_rub field"
+      - name: free_trips_pct
+        description: "casing is_free field"
+      - name: sum_distance_km
+        description: "sum of distance_m divided by 1000"
+  - name: trips_stat_daily
+    description: "daily trip statistics"
+    config:
+      materialized: table
+      indexes: [
+                {'columns': ['date']} #OR SIMPLY - columns: ["date"] AFTER INDEXES FROM THE NEW LINE
+      ]
+  - name: trips_age_daily
+    description: "daily trips stats by user age"
+  - name: trips_age_daily_stat
+    description: "aggregation of daily trips stats by user age"
 # Обращаться к источнику из любой модели теперь нужно будет строго через макрос:
 # {{ source("<name>", "<table_name>") }}
