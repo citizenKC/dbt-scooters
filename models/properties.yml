@@ -74,5 +74,17 @@ models:
     description: "daily trips stats by user age"
   - name: trips_age_daily_stat
     description: "aggregation of daily trips stats by user age"
+  - name: trips_geom
+    description: "new model with geo data"
+    config:
+      materialized: view
+  - name: parking_start_stat
+    description: "new model hexagons in the map detecting the start location of the trip "
+    config:
+      materialized: table
+  - name: parking_finish_stat
+    description: "new model hexagons in the map detecting the finish location of the trip "
+    config:
+      materialized: table
 # Обращаться к источнику из любой модели теперь нужно будет строго через макрос:
 # {{ source("<name>", "<table_name>") }}
