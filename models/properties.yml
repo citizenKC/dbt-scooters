@@ -86,5 +86,9 @@ models:
     description: "new model hexagons in the map detecting the finish location of the trip "
     config:
       materialized: table
+  - name: trips_users
+    description: "trips_prep join with source table trips"
+    config:
+      materialized: incremental
 # Обращаться к источнику из любой модели теперь нужно будет строго через макрос:
 # {{ source("<name>", "<table_name>") }}
