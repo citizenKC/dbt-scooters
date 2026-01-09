@@ -10,6 +10,8 @@ sources:
 
       - name: "users"
         description: "Users of scooter service"
+      - name: "events"
+        description: "Events table with duplicates"
 
 
 models:
@@ -90,5 +92,18 @@ models:
     description: "trips_prep join with source table trips"
     config:
       materialized: incremental
+  - name: events_clean
+    description: "Events table from src database without duplicates"
+    config:
+      materialized: incremental
+  - name: revenue_daily
+    description: "model where we find the revenure per day"
+    config:
+      materialized: incremental
+      incremental_strategy: merge
+      unique_key: ['date']
+      on_schema_change: 'append_new_columns'
+      full_refresh: false
+
 # Обращаться к источнику из любой модели теперь нужно будет строго через макрос:
 # {{ source("<name>", "<table_name>") }}
