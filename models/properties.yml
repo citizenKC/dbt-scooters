@@ -104,6 +104,11 @@ models:
       unique_key: ['date']
       on_schema_change: 'append_new_columns'
       full_refresh: false
+  - name: trips_concurrency
+    description: "model counting the number of concurrent trips (active at the same time)"
+    config:
+      materialized: incremental
+      
 
 # Обращаться к источнику из любой модели теперь нужно будет строго через макрос:
 # {{ source("<name>", "<table_name>") }}
