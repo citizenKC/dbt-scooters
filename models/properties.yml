@@ -108,7 +108,11 @@ models:
     description: "model counting the number of concurrent trips (active at the same time)"
     config:
       materialized: incremental
-      
+  - name: companies
+    description: "a new model with scooters companies statistics based on info from seed"
+  - name: companies_trips
+    description: "Trip satistics by company"
+
 
 # Обращаться к источнику из любой модели теперь нужно будет строго через макрос:
 # {{ source("<name>", "<table_name>") }}
