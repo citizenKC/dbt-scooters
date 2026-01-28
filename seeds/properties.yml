@@ -9,3 +9,7 @@ seeds:
     description: "Dictionary of events"
     config:
       delimiter: ","
+  - name: "age_groups"
+    description: "Age groups to split users for analysis"
+    config:
+      delimiter: ","
