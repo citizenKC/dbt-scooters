@@ -92,10 +92,12 @@ models:
     description: "trips_prep join with source table trips"
     config:
       materialized: incremental
+      on_schema_change: 'append_new_columns'
   - name: events_clean
     description: "Events table from src database without duplicates"
     config:
       materialized: incremental
+      on_schema_change: 'append_new_columns'
   - name: revenue_daily
     description: "model where we find the revenure per day"
     config:
@@ -108,6 +110,7 @@ models:
     description: "model counting the number of concurrent trips (active at the same time)"
     config:
       materialized: incremental
+      on_schema_change: 'append_new_columns'
   - name: companies
     description: "a new model with scooters companies statistics based on info from seed"
   - name: companies_trips

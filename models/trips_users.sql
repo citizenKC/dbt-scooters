@@ -14,6 +14,7 @@
         , tp.date
         , srt.sex
         , extract(year from tp.started_at) - extract(year from srt.birth_date) as age
+        , {{ updated_at() }}
     FROM {{ref("trips_prep")}} as tp
 LEFT JOIN {{ source("scooters_raw", "users") }} as srt
         ON srt.id = tp.user_id

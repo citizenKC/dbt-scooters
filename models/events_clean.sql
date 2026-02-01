@@ -1,6 +1,7 @@
 select distinct ev.user_id
      , ev.timestamp
      , ev.type_id
+     , {{ updated_at() }}
 from {{ source("scooters_raw", "events") }} as ev
 {% if is_incremental() %}
 where ev.timestamp > (select max("timestamp") from {{this}}) 
