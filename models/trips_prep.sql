@@ -11,5 +11,5 @@
   	   , cast(price / 100 as decimal(20,2)) as price_rub
   	   , EXTRACT(EPOCH FROM (finished_at - started_at))/60 as duration_s
   	   , price = 0 and EXTRACT(EPOCH FROM (finished_at - started_at)) > 0 as is_free
-  	   , cast(started_at as date) as date 
+  	   , {{ date_in_moscow('started_at') }} as "date" 
     FROM {{ source("scooters_raw", "trips") }}
