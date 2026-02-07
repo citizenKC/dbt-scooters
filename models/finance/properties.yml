@@ -1,0 +1,12 @@
+version: 2
+
+
+models:
+  - name: revenue_daily
+    description: "model where we find the revenure per day"
+    config:
+      materialized: incremental
+      incremental_strategy: merge
+      unique_key: ['date']
+      on_schema_change: 'append_new_columns'
+      full_refresh: false

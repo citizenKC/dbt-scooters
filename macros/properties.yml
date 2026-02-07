@@ -21,3 +21,9 @@ macros:
       - name: "grid"
         type: "integer"
         description: "Size of grid hexagon"
+  - name: "creation_role"
+    description: "Create role for users as dbt operations"
+    arguments:
+      - name: "name"
+        type: "string"
+        description: "Role name"

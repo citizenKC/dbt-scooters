@@ -115,3 +115,22 @@ dbt parse            # Проверка синтаксиса
 ```sql
 create extension postgis schema public;
 ```
+## Полезные макросы
+
+- `dbt run-operation create_role --args "name: finance"` - создание роли в базе (на примере роли "finance")
+
+## Подсказка, как создать пользователя user_fin с паролем 
+```
+create role user_fin with login password 'StrongP@ssword'
+
+```
+Назначить роль пользователю:
+```
+GRANT finance TO user_fin
+```
+Проверить, есть ли доступ до схемы финансовых аналитиков и до простой схемы dbt
+```
+select * from dbt.events_full
+select * from dbt_finance.revenue_daily
+
+```
