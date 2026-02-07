@@ -1,3 +1,3 @@
-{% macro updated_at() %}
-    now() as updated_at
-{% endmacro %}
+{% macro updated_at() -%}
+NOW() as updated_at
+{%- endmacro %}

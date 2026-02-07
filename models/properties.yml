@@ -93,11 +93,18 @@ models:
     config:
       materialized: incremental
       on_schema_change: 'append_new_columns'
+      # +post-hook: [analyze dbt.trips_users vacuum dbt.trips_users]
+      post-hook:
+        - "analyze dbt.trips_users"
+        - sql: "vacuum dbt.trips_users"
+          transaction: false
   - name: events_clean
     description: "Events table from src database without duplicates"
     config:
       materialized: incremental
-      on_schema_change: 'append_new_columns'
+      # on_schema_change: 'append_new_columns'
+      unique_key: ['user_id','timestamp','type_id']
+      strategy: merge
   - name: revenue_daily
     description: "model where we find the revenure per day"
     config:
