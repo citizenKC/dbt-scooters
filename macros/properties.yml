@@ -21,9 +21,13 @@ macros:
       - name: "grid"
         type: "integer"
         description: "Size of grid hexagon"
-  - name: "creation_role"
+  - name: "create_role"
     description: "Create role for users as dbt operations"
     arguments:
       - name: "name"
         type: "string"
         description: "Role name"
+  - name: "create_postgis"
+    description: "activating PostGis in PostgreSQL"
+
+
