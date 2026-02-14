@@ -29,5 +29,16 @@ macros:
         description: "Role name"
   - name: "create_postgis"
     description: "activating PostGis in PostgreSQL"
+  - name: "generate_schema_name"
+    description: |
+      Customize schema name generation using only provided name for some schemas.
+      dbt uses this macro automatically, there is no need to run it manually.
+    arguments: 
+      - name: "custom_schema_name"
+        type: string
+        description: "Custom name of schema defined in project configuration"
+      - name: "node"
+        type: "node"
+        description: "dbt node to generate schema name for (not in use)"
 
 
