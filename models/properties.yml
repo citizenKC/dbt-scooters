@@ -10,7 +10,7 @@ sources:
         loaded_at_field: "finished_at"
         freshness:
           warn_after:
-            count: 1
+            count: 300
             period: "day"
           error_after:
             count: 3650
@@ -18,6 +18,17 @@ sources:
 
       - name: "users"
         description: "Users of scooter service"
+        columns:
+          - name: "sex"
+            description: "User gender"
+            data_tests:
+              - accepted_values:
+                  arguments:
+                    values: ['M', 'F']
+              - not_null:
+                  config:
+                    severity: 'warn'
+
       - name: "events"
         description: "Events table with duplicates"
       
