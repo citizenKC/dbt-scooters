@@ -93,6 +93,9 @@ models:
       ]
   - name: trips_age_daily
     description: "daily trips stats by user age"
+    data_tests:
+      - unique:
+          column_name: "date::text || age::text"
   - name: trips_age_daily_stat
     description: "aggregation of daily trips stats by user age"
   - name: trips_geom
@@ -133,6 +136,11 @@ models:
     description: "a new model with scooters companies statistics based on info from seed"
   - name: companies_trips
     description: "Trip satistics by company"
+    columns:
+      - name: "company"
+        description: "Scooters manufacturing name"
+        data_tests:
+          - unique
   - name: events_full
     description: "Enriched events_clean with type_id from seed file called event_types"
     config:
