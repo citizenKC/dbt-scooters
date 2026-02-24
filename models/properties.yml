@@ -142,6 +142,11 @@ models:
       # on_schema_change: 'append_new_columns'
       unique_key: ['user_id','timestamp','type_id']
       strategy: merge
+    columns:
+      - name: "user_id"
+        description: "User identifier"
+        data_tests:
+          - not_null
   - name: trips_concurrency
     description: "model counting the number of concurrent trips (active at the same time)"
     config:

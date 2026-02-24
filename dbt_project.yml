@@ -19,6 +19,9 @@ models:
   dbt_scooters:
     +materialized: table
     +on_schema_change: 'append_new_columns'
+    +persist_docs:
+      relation: true
+      columns: true
     finance:
       +schema: "finance"
       +grants:
@@ -27,3 +30,6 @@ seeds:
   dbt_scooters:
     ops:
       +schema: "ops"
+    +persist_docs:
+      relation: true
+      columns: true
