@@ -3,3 +3,5 @@ select company,
        sum(scooters) as scooters
 from {{ ref("scooters") }}
 group by company
+
+-- companies model

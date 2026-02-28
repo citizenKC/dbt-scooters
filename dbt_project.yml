@@ -1,6 +1,7 @@
 name: 'dbt_scooters'
 version: '1.0.0'
 
+
 profile: 'dbt_scooters'
 
 model-paths: ["models"]
@@ -33,3 +34,5 @@ seeds:
     +persist_docs:
       relation: true
       columns: true
+
+# this is the end of the file
