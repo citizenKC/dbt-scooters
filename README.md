@@ -15,6 +15,15 @@ dbt_scooters/
 ├── dbt_project.yml # Конфигурация проекта
 └── uv.lock # Lock-файл зависимостей
 ```
+...
+## Каталог данных
+
+Каталог dbt, который автоматически обновляется из ветки `main`:
+
+https://inzhenerka.github.io/dbt-scooters
+
+...
+
 
 ## Быстрый старт
 
