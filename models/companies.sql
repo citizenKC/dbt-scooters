@@ -4,4 +4,3 @@ select company,
 from {{ ref("scooters") }}
 group by company
 
--- companies model
