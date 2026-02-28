@@ -23,10 +23,7 @@ jobs:
         run: uv sync --locked 
       
       - name: Prepare connection profile
-        # run: cp profiles.example.yml profile.yml
-        run: | 
-          mkdir -p ~/.dbt 
-          cp profiles.example.yml ~/.dbt/profiles.yml
+        run: cp profiles.example.yml profile.yml
 
       - name: Generate docs
         run: uv run dbt docs generate
