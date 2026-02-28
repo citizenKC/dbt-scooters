@@ -23,10 +23,13 @@ jobs:
         run: uv sync --locked 
       
       - name: Prepare connection profile
-        run: cp profiles.example.yml profile.yml
+        # run: cp profiles.example.yml profile.yml
+        run: | 
+          mkdir -p ~/.dbt 
+          cp profiles.example.yml ~/.dbt/profiles.yml
 
       - name: Generate docs
-        run: uv run dbt docs generate --profiles-dir ./path/to/profiles
+        run: uv run dbt docs generate
         env:
           DBT_ENV_SECRET_PASSWORD: ${{ secrets.DBT_ENV_SECRET_PASSWORD }}
 
