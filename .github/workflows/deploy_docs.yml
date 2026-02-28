@@ -25,9 +25,9 @@ jobs:
       - name: Prepare connection profile
         run: cp profiles.example.yml profile.yml
 
-      - name: generate docs
-        run: uv run dbt docs generate 
-        env: 
+      - name: Generate docs
+        run: uv run dbt docs generate --profiles-dir ./path/to/profiles
+        env:
           DBT_ENV_SECRET_PASSWORD: ${{ secrets.DBT_ENV_SECRET_PASSWORD }}
 
       - name: Prepare site files
@@ -36,7 +36,7 @@ jobs:
           cp target/index.html site/
           cp target/manifest.json site/
           cp target/catalog.json site/
-          
+
       - name: Commit site for GitHub Pages 
         uses: peaceiris/actions-gh-pages@v4
         with:
