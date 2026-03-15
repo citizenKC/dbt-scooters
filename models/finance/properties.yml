@@ -1,6 +1,5 @@
 version: 2
 
-
 models:
   - name: revenue_daily
     description: "model where we find the revenure per day"
@@ -10,3 +9,28 @@ models:
       unique_key: ['date']
       on_schema_change: 'append_new_columns'
       full_refresh: false
+      contract:
+        enforced: true
+    columns:
+      - name: date
+        description: Unique day
+        data_type: date
+      - name: "revenure_rub"
+        description: "Daily revenue in rubles"
+        data_type: decimal(38,2)
+      - name: update_at
+        description: THe time when the row was updated 
+        data_type: timestampz
+exposures:
+  - name: "financial dashboard"
+    label: "financial dashboard"
+    type: "dashboard"
+    maturity: "high"
+    description: "Main financial dashboard of company with financial code metrics"
+    depends_on:
+      - "ref('revenue_daily')"
+    owner:
+      name: "financial department"
+
+# Раньше выполнял произвольный SQL-код в базе с помощью dbt show. 
+# Но эта команда работает только для select-запросов. Чтобы выполнять запросы DDL, существует команда dbt run-operation
