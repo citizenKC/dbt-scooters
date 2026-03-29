@@ -196,6 +196,19 @@ models:
         incrementality:
           start_date: "2023-06-01"
           days_max: 60
+  - name: "sex_age_pivot"
+    description: "Model with age aggregation via sex field using dbt_utils test-templates"
+    columns:
+      - name: "age"
+        description: "numerical age of user"
+        data_tests:
+          - dbt_utils.not_constant
+    data_tests:
+      - unique_key:
+          columns: ['age']
+
+
+
 
 # Обращаться к источнику из любой модели теперь нужно будет строго через макрос:
 # {{ source("<name>", "<table_name>") }}
