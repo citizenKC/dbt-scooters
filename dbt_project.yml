@@ -34,5 +34,6 @@ seeds:
     +persist_docs:
       relation: true
       columns: true
-
+vars:
+  'dbt_date:time_zone': 'Europe/Moscow'
 # this is the end of the file
