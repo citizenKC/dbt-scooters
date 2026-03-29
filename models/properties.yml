@@ -211,6 +211,17 @@ models:
           columns: ['age']
       - dbt_expectations.expect_table_column_count_to_equal:
           value: 3
+  - name: "events_stream"
+    description: "User events prepared for product analysis"
+    config:
+      materialized: "ephemeral"
+  - name: "book_scooter_retention"
+    description: >
+      Model calculating retention with the help of dbt_product_analytics package
+      tells how many people started search for scooter and finally booked it on or after
+      1, 7, 14 days (or weeks, months, years), etc
+    
+
 
 
 
